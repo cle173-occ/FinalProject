@@ -1,3 +1,4 @@
+import javax.swing.JFrame;
 
 public class BinarySearchTreeDemo {
 
@@ -16,6 +17,12 @@ public class BinarySearchTreeDemo {
 		tree.iPrint();
 		tree.prePrint();
 		tree.postPrint();
-
+		
+		tree.find(3);
+		
+		JFrame frame = new Frame();
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 	}
 }
