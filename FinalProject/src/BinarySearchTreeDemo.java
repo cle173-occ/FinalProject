@@ -14,9 +14,8 @@ public class BinarySearchTreeDemo {
 		
 		
 		tree.iPrint();
-		//tree.prePrint();
-		//tree.postPrint();
-		System.out.println(tree.find(6));
-	}
+		tree.prePrint();
+		tree.postPrint();
 
+	}
 }

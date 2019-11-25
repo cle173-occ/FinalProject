@@ -30,7 +30,7 @@ public class BinarySearchTree {
 				if(right == null) {
 					right = node;
 				} else {
-					left.addNode(node);
+					right.addNode(node);
 				}
 			}
 		}
@@ -145,7 +145,7 @@ public class BinarySearchTree {
 		System.out.print(parent.data + " ");
 		iPrint(parent.right);
 	}
-	/*
+
 	
 	//Prints the Tree using PreOrder Traversal
 	public void prePrint() {
@@ -175,5 +175,4 @@ public class BinarySearchTree {
 		System.out.print(parent.data + " ");
 	}
 	
-	*/
 }
