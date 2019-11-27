@@ -15,7 +15,7 @@ public class CustomComponent extends JComponent
     {
         // Use this method to draw whatever you want
         g.setColor(Color.BLACK);
-        g.drawOval(100, 100, 50, 80);
+        g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
         
     }
 
