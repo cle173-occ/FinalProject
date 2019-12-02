@@ -79,16 +79,31 @@ public class Frame extends JFrame
                 
                 int nodePosX = COMPONENT_HEIGHT / 2;
                 
+                int level = 1;
+                int i = 0;
                 BinarySearchTree tree = new BinarySearchTree();
-                for(int i = 0; i < arr.size(); i++) {
+                for(i = 0; i < arr.size(); i++) {
                     tree.add(arr.get(i));
-                    component.cir.add(new Circle(val[i], nodePosX + 50*i, nodeHeight + 50*i));
-                    component.cir.add(new Circle(val[i], nodePosX - 50*i, nodeHeight + 50*i));
+                    
+                    if(i == 0) {component.cir.add(new Circle(val[0], nodePosX, nodeHeight));}
+                    
+                    for(int j = i+1; j < i+3; j++) {
+                        if(arr.get(j) > arr.get(i)) {
+                            component.cir.add(new Circle(val[j], nodePosX + 50*i, nodeHeight + 50*i));
+                        }
+                        
+                        if(arr.get(j) < arr.get(i)) {
+                            component.cir.add(new Circle(val[j], nodePosX - 50*i, nodeHeight + 50*i));
+                        }
+                    }
+                    
+                    //component.cir.add(new Circle(val[i], nodePosX + 50*i, nodeHeight + 50*i)); //Right
+                    //component.cir.add(new Circle(val[i], nodePosX - 50*i, nodeHeight + 50*i)); //Left
                 }
 
-                tree.iPrint();
-                tree.prePrint();
-                tree.postPrint();
+                //tree.iPrint();
+                //tree.prePrint();
+                //tree.postPrint();
                 
             
             } 
