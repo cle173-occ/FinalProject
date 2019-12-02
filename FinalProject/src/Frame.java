@@ -2,22 +2,23 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.*;
 
 public class Frame extends JFrame
 {
-    private JButton draw;
+    private JButton draw, clear;
     private JLabel ins1;
     private JTextField root;
     private JPanel panel;
-    private JComponent component;
-    public ArrayList<Integer> arr = new ArrayList<>();
+    private CustomComponent component;
     
+    public int nodeHeight = 25;    
     private static final int FRAME_HEIGHT = 750;
-    private static final int FRAME_WIDTH = 600;
-    private static final int COMPONENT_WIDTH = 500;
-    private static final int COMPONENT_HEIGHT = 500;
+    private static final int FRAME_WIDTH = 750;
+    private static final int COMPONENT_WIDTH = 700;
+    private static final int COMPONENT_HEIGHT = 600;
     
     
     public Frame() {
@@ -30,12 +31,14 @@ public class Frame extends JFrame
         
         //Button to draw a tree
         draw = new JButton("Draw Tree");
+        clear = new JButton("Clear");
         
         //Event handler for button
         draw.addActionListener(new DrawTree());
+        clear.addActionListener(new Clear());
         
         //Label for the root
-        ins1 = new JLabel("First number is the root:");
+        ins1 = new JLabel("The first number is the root:");
         
         //Text area for numbers
         root = new JTextField(15);
@@ -52,6 +55,7 @@ public class Frame extends JFrame
         panel.add(ins1);
         panel.add(root);
         panel.add(draw);
+        panel.add(clear);
         panel.add(component);
         
         this.add(panel);
@@ -61,6 +65,7 @@ public class Frame extends JFrame
       
         public void actionPerformed(ActionEvent e) throws NumberFormatException
         {
+        	ArrayList<Integer> arr = new ArrayList<>();
             String s = root.getText();
             String[] val = s.split(","); //Separates the values by comma and places them into a string array
             
@@ -71,30 +76,44 @@ public class Frame extends JFrame
                     int n = Integer.parseInt(val[i]);
                     arr.add(n);
                 }
+                
+                int nodePosX = COMPONENT_HEIGHT / 2;
+                
+                BinarySearchTree tree = new BinarySearchTree();
+                for(int i = 0; i < arr.size(); i++) {
+                    tree.add(arr.get(i));
+                    component.cir.add(new Circle(val[i], nodePosX + 50*i, nodeHeight + 50*i));
+                }
+
+                tree.iPrint();
+                tree.prePrint();
+                tree.postPrint();
+                
+            
             } 
-            catch(NumberFormatException exception) {
-                System.out.println("Please input numbers");
-                root.selectAll();
-            }
-            //Prints out the int array list
-            /*
-            for(int y : arr) {
-                System.out.println(y);
-            }
-            */
-            
-            BinarySearchTree tree = new BinarySearchTree();
-            for(int i = 0; i < arr.size(); i++) {
-                tree.add(arr.get(i));
+            catch(Exception exception) {
+                if(exception instanceof NumberFormatException) {
+                	System.out.println("Please input numbers");
+                }
             }
             
-            tree.iPrint();
-            tree.prePrint();
-            tree.postPrint();
-            
-            
-                        
+            component.draw();
+            root.requestFocusInWindow();
+            root.selectAll();
         }
+    }
+    
+    class Clear implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			if(component.cir.size() != 0) {
+            	component.cir.clear();
+            }
+			component.draw();
+			root.requestFocusInWindow();
+			root.selectAll();
+		}
+    	
     }
     
 }

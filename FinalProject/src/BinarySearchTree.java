@@ -68,6 +68,10 @@ public class BinarySearchTree {
 		return false;
 	}
 	
+	public void search() {
+		
+	}
+	
 	public void remove(Comparable obj) {
 		
 		Node toBeRemoved = root;
