@@ -83,6 +83,7 @@ public class Frame extends JFrame
                 for(int i = 0; i < arr.size(); i++) {
                     tree.add(arr.get(i));
                     component.cir.add(new Circle(val[i], nodePosX + 50*i, nodeHeight + 50*i));
+                    component.cir.add(new Circle(val[i], nodePosX - 50*i, nodeHeight + 50*i));
                 }
 
                 tree.iPrint();
@@ -112,6 +113,7 @@ public class Frame extends JFrame
 			component.draw();
 			root.requestFocusInWindow();
 			root.selectAll();
+		
 		}
     	
     }
