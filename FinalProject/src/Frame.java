@@ -13,6 +13,8 @@ public class Frame extends JFrame
     private JTextField root;
     private JPanel panel;
     private CustomComponent component;
+
+    private BinarySearchTree tree;
     
     public int nodeHeight = 25;    
     private static final int FRAME_HEIGHT = 750;
@@ -22,7 +24,8 @@ public class Frame extends JFrame
     
     
     public Frame() {
-        
+        tree = new BinarySearchTree();
+    	
         createComponents();
         setSize(FRAME_HEIGHT, FRAME_WIDTH);
     }
@@ -46,7 +49,7 @@ public class Frame extends JFrame
         root.selectAll();
         
         //Custom component to draw
-        component = new CustomComponent();
+        component = new CustomComponent(tree);
         component.setPreferredSize(new Dimension(COMPONENT_WIDTH, COMPONENT_HEIGHT));
         
         //Panel with added GUI components
@@ -79,11 +82,11 @@ public class Frame extends JFrame
                 
                 int nodePosX = COMPONENT_HEIGHT / 2;
                 
-                BinarySearchTree tree = new BinarySearchTree();
+                tree = new BinarySearchTree();
                 for(int i = 0; i < arr.size(); i++) {
                     tree.add(arr.get(i));
-                    component.cir.add(new Circle(val[i], nodePosX + 50*i, nodeHeight + 50*i));
-                    component.cir.add(new Circle(val[i], nodePosX - 50*i, nodeHeight + 50*i));
+                    //component.cir.add(new Circle(val[i], nodePosX + 50*i, nodeHeight + 50*i));
+                    //component.cir.add(new Circle(val[i], nodePosX - 50*i, nodeHeight + 50*i));
                 }
 
                 tree.iPrint();

@@ -7,11 +7,11 @@ import javax.swing.JComponent;
 
 public class CustomComponent extends JComponent
 {
-	public List<Circle> cir;
+	public BinarySearchTree cTree;
 	
-    public CustomComponent(/*pass refs here*/)
+    public CustomComponent(BinarySearchTree ct)
     {
-        cir = new ArrayList<>();
+        cTree = ct;
     }
 /*    
     public void draw(String num, int x, int y) {
@@ -34,12 +34,21 @@ public class CustomComponent extends JComponent
         g.setColor(Color.BLACK);
         g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
         
-        for(Circle x : cir) {
-        	x.drawCircle(g);
-        }
+        
         
     }
-
+    
+    private double getNodeX(String p)
+    {
+    	// var for curLeftX=0, curRightX=getWidth(), curX=(curLeftX+curRightX)/2.0
+    	// loop through p and update LXand RX
+    	return 0.0;
+    }
+    private double getNodeY(int d)
+    {
+    	// for Y, just mult d by vertical spacing and return it
+    	return 0.0;
+    }
 }
 
 class Circle{

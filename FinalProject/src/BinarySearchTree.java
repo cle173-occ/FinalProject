@@ -14,23 +14,30 @@ public class BinarySearchTree {
 		public Node left;
 		public Node right;
 		
+		public String path;  // string of "1" and "0" (Huffman tree inspired), eg. "101" means R L R
+		public int depth;
+		
 		//Determines if nodes are added to the left or the right
-		public void addNode(Node node) {
+		public void addNode(Node node, String p, int d) {
 			//Compares the data of the nodes
 			int comp = node.data.compareTo(data);
 			if(comp < 0) {
 				if(left == null) {
+					node.path = p;
+					node.depth = d;
 					left = node;
 				} else {
-					left.addNode(node);
+					left.addNode(node, p+"0", d+1);
 					} 
 			}
 			
 			if(comp > 0) {
 				if(right == null) {
+					node.path = p;
+					node.depth = d;
 					right = node;
 				} else {
-					right.addNode(node);
+					right.addNode(node, p+"1", d+1);
 				}
 			}
 		}
@@ -42,10 +49,12 @@ public class BinarySearchTree {
 		newNode.data = obj;
 		newNode.left = null;
 		newNode.right = null;
+		newNode.path = "";
+		newNode.depth = 0;
 		
 		if(root == null) { root = newNode;}
 		else {
-			root.addNode(newNode);
+			root.addNode(newNode, "", 0);
 		}
 		
 	}
