@@ -23,6 +23,7 @@ public class CustomComponent extends JComponent
         //System.out.println(nodeY);
     }
 */    
+    
     public void draw() { 
     	repaint();
     }
