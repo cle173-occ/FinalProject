@@ -38,7 +38,7 @@ public class Frame extends JFrame
         
         //Event handler for button
         draw.addActionListener(new DrawTree());
-        clear.addActionListener(new Clear());
+        clear.addActionListener(new ClearTree());
         
         //Label for the root
         ins1 = new JLabel("The first number is the root:");
@@ -82,18 +82,41 @@ public class Frame extends JFrame
                 
                 int nodePosX = COMPONENT_HEIGHT / 2;
                 
+
                 tree = new BinarySearchTree();
-                for(int i = 0; i < arr.size(); i++) {
+
+                int level = 1;
+                int i = 0;
+                BinarySearchTree tree = new BinarySearchTree();
+                for(i = 0; i < arr.size(); i++) {
+
                     tree.add(arr.get(i));
+
                     //component.cir.add(new Circle(val[i], nodePosX + 50*i, nodeHeight + 50*i));
                     //component.cir.add(new Circle(val[i], nodePosX - 50*i, nodeHeight + 50*i));
+
+                    
+                    if(i == 0) {component.cir.add(new Circle(val[0], nodePosX, nodeHeight));}
+                    
+                    for(int j = i+1; j < i+3; j++) {
+                        if(arr.get(j) > arr.get(i)) {
+                            component.cir.add(new Circle(val[j], nodePosX + 50*i, nodeHeight + 50*i));
+                        }
+                        
+                        if(arr.get(j) < arr.get(i)) {
+                            component.cir.add(new Circle(val[j], nodePosX - 50*i, nodeHeight + 50*i));
+                        }
+                    }
+                    
+                    //component.cir.add(new Circle(val[i], nodePosX + 50*i, nodeHeight + 50*i)); //Right
+                    //component.cir.add(new Circle(val[i], nodePosX - 50*i, nodeHeight + 50*i)); //Left
                 }
 
-                tree.iPrint();
-                tree.prePrint();
-                tree.postPrint();
+                //tree.iPrint();
+                //tree.prePrint();
+                //tree.postPrint();
                 
-            
+                
             } 
             catch(Exception exception) {
                 if(exception instanceof NumberFormatException) {
@@ -107,7 +130,7 @@ public class Frame extends JFrame
         }
     }
     
-    class Clear implements ActionListener{
+    class ClearTree implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
 			if(component.cir.size() != 0) {

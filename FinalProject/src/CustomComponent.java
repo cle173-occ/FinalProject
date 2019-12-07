@@ -8,6 +8,7 @@ import javax.swing.JComponent;
 public class CustomComponent extends JComponent
 {
 	public BinarySearchTree cTree;
+	public List<Circle> cir;
 	
     public CustomComponent(BinarySearchTree ct)
     {
