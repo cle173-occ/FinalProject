@@ -66,7 +66,7 @@ public class BinarySearchTree {
 		while(current != null) {
 			int x = current.data.compareTo(obj);
 			if(x == 0) {
-				System.out.println("Node: " + count);
+				//System.out.println("Node: " + count);
 				return true;
 			} 
 			else if(x > 0) {current = current.left;}
@@ -77,8 +77,33 @@ public class BinarySearchTree {
 		return false;
 	}
 	
-	public void search() {
+	public Node getNode(int x) {
+		Node current = root;
+		int data = (int) current.data;
 		
+		while(current != null) {
+			if(data == x) { 
+				return current;
+			}
+			
+			if(data < x) {
+				current = current.left;
+			}
+			else {
+				current = current.right;
+			}
+		}
+		
+		return null;
+	}
+	
+	public String getPath(int x) {
+		
+		if(find(x)) {
+			return getNode(x).path;
+		}
+					
+		return "Number not in tree";
 	}
 	
 	public void remove(Comparable obj) {
