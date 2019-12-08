@@ -31,6 +31,7 @@ public class BinarySearchTree {
 					} 
 			}
 			
+			
 			if(comp > 0) {
 				if(right == null) {
 					node.path = p;
