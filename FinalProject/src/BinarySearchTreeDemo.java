@@ -8,7 +8,9 @@ public class BinarySearchTreeDemo {
 		frame.setTitle("Binary Search Tree");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-*/		
+
+*/
+		
 		BinarySearchTree tree = new BinarySearchTree();
 		tree.add(5);
 		tree.add(3);
@@ -37,5 +39,7 @@ public class BinarySearchTreeDemo {
 		System.out.println("Depth of node with data 6: " + tree.getDepth(6));
 		System.out.println("Depth of node with data 2: " + tree.getDepth(2));
 		System.out.println("Depth of node with data 8: " + tree.getDepth(8));
+		
+
 	}
 }

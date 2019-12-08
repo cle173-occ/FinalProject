@@ -91,31 +91,16 @@ public class Frame extends JFrame
                 for(i = 0; i < arr.size(); i++) {
 
                     tree.add(arr.get(i));
-
-                    //component.cir.add(new Circle(val[i], nodePosX + 50*i, nodeHeight + 50*i));
-                    //component.cir.add(new Circle(val[i], nodePosX - 50*i, nodeHeight + 50*i));
-
-                    
-                    if(i == 0) {component.cir.add(new Circle(val[0], nodePosX, nodeHeight));}
-                    
-                    for(int j = i+1; j < i+3; j++) {
-                        if(arr.get(j) > arr.get(i)) {
-                            component.cir.add(new Circle(val[j], nodePosX + 50*i, nodeHeight + 50*i));
-                        }
-                        
-                        if(arr.get(j) < arr.get(i)) {
-                            component.cir.add(new Circle(val[j], nodePosX - 50*i, nodeHeight + 50*i));
-                        }
-                    }
                     
                     //component.cir.add(new Circle(val[i], nodePosX + 50*i, nodeHeight + 50*i)); //Right
                     //component.cir.add(new Circle(val[i], nodePosX - 50*i, nodeHeight + 50*i)); //Left
                 }
-
-                //tree.iPrint();
-                //tree.prePrint();
-                //tree.postPrint();
                 
+                
+                
+                for(i = 0; i < arr.size(); i++) {
+                	//component.cir.add(new Circle(val[i], tree.ge), nodeHeight + 50*i));
+                }
                 
             } 
             catch(Exception exception) {

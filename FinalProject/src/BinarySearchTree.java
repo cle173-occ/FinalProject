@@ -23,8 +23,8 @@ public class BinarySearchTree {
 			int comp = node.data.compareTo(data);
 			if(comp < 0) {
 				if(left == null) {
-					node.path = p;
-					node.depth = d;
+					node.path = p + "0";
+					node.depth = d + 1;
 					left = node;
 				} else {
 					left.addNode(node, (p + "0"), d+1);
@@ -34,8 +34,8 @@ public class BinarySearchTree {
 			
 			if(comp > 0) {
 				if(right == null) {
-					node.path = p;
-					node.depth = d;
+					node.path = p + "1";
+					node.depth = d + 1;
 					right = node;
 				} else {
 					right.addNode(node, (p + "1"), d+1);
@@ -55,7 +55,7 @@ public class BinarySearchTree {
 		
 		if(root == null) { root = newNode;}
 		else {
-			root.addNode(newNode, "", 1);
+			root.addNode(newNode, "", 0);
 		}
 		
 	}

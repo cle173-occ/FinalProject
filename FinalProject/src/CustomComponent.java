@@ -36,18 +36,45 @@ public class CustomComponent extends JComponent
         g.setColor(Color.BLACK);
         g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
         
+        for(Circle x : cir) {
+        	
+        	x.drawCircle(g);
+        }
+        
     }
     
     private double getNodeX(String p)
     {
     	// var for curLeftX=0, curRightX=getWidth(), curX=(curLeftX+curRightX)/2.0
     	// loop through p and update LXand RX
-    	return 0.0;
+    	
+    	String[] arr = p.split("");
+    
+    	double curLeftX = 0;
+    	double curRightX = getWidth();
+    	
+    	if(p == null) {
+    		return getWidth() / 2.0;
+    	}
+    	
+    	for(int i = 0; i < arr.length; i++) {
+    		if(arr[i] == "1") {
+    			curLeftX = curRightX / 2;
+    		}
+    		
+    	}
+    	
+    	double curX = (curLeftX+curRightX)/2.0;
+    	
+    	
+    	return curX;
     }
+    
     private double getNodeY(int d)
     {
     	// for Y, just mult d by vertical spacing and return it
-    	return 0.0;
+    	
+    	return d * getY();
     }
 }
 
