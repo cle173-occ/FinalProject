@@ -27,7 +27,7 @@ public class BinarySearchTree {
 					node.depth = d;
 					left = node;
 				} else {
-					left.addNode(node, p+"0", d+1);
+					left.addNode(node, (p + "0"), d+1);
 					} 
 			}
 			
@@ -38,7 +38,7 @@ public class BinarySearchTree {
 					node.depth = d;
 					right = node;
 				} else {
-					right.addNode(node, p+"1", d+1);
+					right.addNode(node, (p + "1"), d+1);
 				}
 			}
 		}
@@ -55,7 +55,7 @@ public class BinarySearchTree {
 		
 		if(root == null) { root = newNode;}
 		else {
-			root.addNode(newNode, "", 0);
+			root.addNode(newNode, "", 1);
 		}
 		
 	}
@@ -78,34 +78,48 @@ public class BinarySearchTree {
 		return false;
 	}
 	
-	public Node getNode(int x) {
-		Node current = root;
-		int data = (int) current.data;
+	
+	public String getPath(Comparable obj) {
 		
+		Node current = root;
+
 		while(current != null) {
-			if(data == x) { 
-				return current;
+			int x = current.data.compareTo(obj);
+			if(x == 0) { 
+				return current.path;
 			}
 			
-			if(data < x) {
+			if(x > 0) {
 				current = current.left;
 			}
 			else {
 				current = current.right;
 			}
 		}
-		
-		return null;
-	}
-	
-	public String getPath(int x) {
-		
-		if(find(x)) {
-			return getNode(x).path;
-		}
 					
 		return "Number not in tree";
 	}
+	
+	public int getDepth(Comparable obj) {
+			
+			Node current = root;
+	
+			while(current != null) {
+				int x = current.data.compareTo(obj);
+				if(x == 0) { 
+					return current.depth;
+				}
+				
+				if(x > 0) {
+					current = current.left;
+				}
+				else {
+					current = current.right;
+				}
+			}
+						
+			return 0;
+		}
 	
 	public void remove(Comparable obj) {
 		
