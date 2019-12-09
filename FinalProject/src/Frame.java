@@ -15,7 +15,6 @@ public class Frame extends JFrame
     private CustomComponent component;
 
     private BinarySearchTree tree;
-    private ArrayList<Integer> arr;
     
     public int nodeHeight = 25;    
     private static final int FRAME_HEIGHT = 750;
@@ -26,7 +25,6 @@ public class Frame extends JFrame
     
     public Frame() {
         tree = new BinarySearchTree();
-    	arr = new ArrayList<>();
         
         createComponents();
         setSize(FRAME_HEIGHT, FRAME_WIDTH);
@@ -51,7 +49,7 @@ public class Frame extends JFrame
         root.selectAll();
         
         //Custom component to draw
-        component = new CustomComponent(tree, arr);
+        component = new CustomComponent(tree);
         component.setPreferredSize(new Dimension(COMPONENT_WIDTH, COMPONENT_HEIGHT));
         
         //Panel with added GUI components
@@ -70,7 +68,7 @@ public class Frame extends JFrame
       
         public void actionPerformed(ActionEvent e) throws NumberFormatException
         {
-        	//ArrayList<Integer> arr = new ArrayList<>();
+        	ArrayList<Integer> arr = new ArrayList<>();
             String s = root.getText();
             String[] val = s.split(","); //Separates the values by comma and places them into a string array
             
@@ -91,7 +89,6 @@ public class Frame extends JFrame
                 for(int i = 0; i < arr.size(); i++) {
 
                     tree.add(arr.get(i));
-                    component.cArr.add(arr.get(i));
                     
                     //component.cir.add(new Circle(val[i], nodePosX + 50*i, nodeHeight + 50*i)); //Right
                     //component.cir.add(new Circle(val[i], nodePosX - 50*i, nodeHeight + 50*i)); //Left

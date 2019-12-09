@@ -8,12 +8,10 @@ import javax.swing.JComponent;
 public class CustomComponent extends JComponent
 {
 	public BinarySearchTree cTree;
-	public ArrayList<Integer> cArr;
 	
-    public CustomComponent(BinarySearchTree ct, ArrayList<Integer> a)
+    public CustomComponent(BinarySearchTree ct)
     {
         cTree = ct;
-        cArr = a;
     }
 /*    
     public void draw(String num, int x, int y) {
@@ -40,11 +38,10 @@ public class CustomComponent extends JComponent
         
         for(int i = 0; i < cArr.size(); i++) {
         	
-        	int posX = getNodeX(cTree.getPath(cArr.get(i)));
-        	int posY = getNodeY(cTree.getDepth(cArr.get(i)));
+        	int posX = getNodeX(cTree.getPath(cTree.getData(i)));
+        	int posY = getNodeY(cTree.getDepth(cTree.getData(i)));
         	
         	g.drawOval(posX, posY, 60, 60);
-        	g.drawString(cArr.get(i).toString(), posX / 2, posY / 2);
         	
         	System.out.println(posX);
         	System.out.println(posY);
