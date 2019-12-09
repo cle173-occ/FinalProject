@@ -35,12 +35,14 @@ public class CustomComponent extends JComponent
             	
             	g.drawOval(posX, posY, 50, 50);
             	g.drawString(cArr.get(i).toString(), posX + 23, posY + 27);
-            	
-            	//System.out.println(cArr.get(i) + " posX: " +posX);
-            	//System.out.println(cArr.get(i) + " posY: " +posY);
-            	//System.out.println(getNodeY(cTree.getDepth(cArr.get(i))));
-            	
-            	//System.out.println("Depth: " +cTree.getDepth(cTree.getData(cArr.get(i))));
+ /*           	
+            	if(i > 0) {
+            		int preX = getNodeX(cTree.getPath(cTree.getData(cArr.get(i - 1))));
+            		int preY = getNodeY(cTree.getDepth(cTree.getData(cArr.get(i - 1))));
+            		
+            		g.drawLine(posX + 25, posY, preX, preY);
+            	}
+*/
         	}
 
         }
