@@ -1,77 +1,85 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JComponent;
 
+
 public class CustomComponent extends JComponent
 {
-	public BinarySearchTree cTree;
+	private BinarySearchTree cTree;
+	public ArrayList<Integer> cArr;
 	
-    public CustomComponent(BinarySearchTree ct)
-    {
-        cTree = ct;
-    }
-/*    
-    public void draw(String num, int x, int y) {
-    	str = num;
-    	nodeX = x;
-    	nodeY = y;
-    	repaint();
-    	//System.out.println(nodeX);
-        //System.out.println(nodeY);
-    }
-*/    
-    
-    public void draw() { 
+    public CustomComponent(BinarySearchTree ct) {
+    	 cTree = ct;
+    	 cArr = new ArrayList<>();
+	}
+
+	public void draw() { 
         
     	repaint();
     }
     
-    public void paintComponent(Graphics g)
+    public void paintComponent(Graphics g) throws NullPointerException
     {
         // Use this method to draw whatever you want
     	setLocation(getX(), getY());
         g.setColor(Color.BLACK);
         g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);     
-        
-        for(int i = 0; i < cArr.size(); i++) {
-        	
-        	int posX = getNodeX(cTree.getPath(cTree.getData(i)));
-        	int posY = getNodeY(cTree.getDepth(cTree.getData(i)));
-        	
-        	g.drawOval(posX, posY, 60, 60);
-        	
-        	System.out.println(posX);
-        	System.out.println(posY);
-        	//System.out.println(getNodeY(cTree.getDepth(cArr.get(i))));
-        	
-        }
 
+        try {
+        	for(int i = 0; i < cTree.getCount(); i++) {
+            	
+            	int posX = getNodeX(cTree.getPath(cTree.getData(cArr.get(i))));
+            	int posY = getNodeY(cTree.getDepth(cTree.getData(cArr.get(i))));
+            	
+            	g.drawOval(posX, posY, 50, 50);
+            	g.drawString(cArr.get(i).toString(), posX + 23, posY + 27);
+            	
+            	//System.out.println(cArr.get(i) + " posX: " +posX);
+            	//System.out.println(cArr.get(i) + " posY: " +posY);
+            	//System.out.println(getNodeY(cTree.getDepth(cArr.get(i))));
+            	
+            	//System.out.println("Depth: " +cTree.getDepth(cTree.getData(cArr.get(i))));
+        	}
+
+        }
+        catch(Exception e) {}
+        
+        getNodeX(cTree.getPath(7));
+    	System.out.println("Path:" +cTree.getPath(6));
     }
+
     
     private int getNodeX(String p)
     {
     	// var for curLeftX=0, curRightX=getWidth(), curX=(curLeftX+curRightX)/2.0
     	// loop through p and update LXand RX
-    	//System.out.println("posX" + p + "\n");
+    	System.out.println("posX: " + p + "\n");
     	String[] arr = p.split("");
-    
+    	
     	double curLeftX = 0;
     	double curRightX = getWidth();
     	
     	for(int i = 0; i < arr.length; i++) {
-    		if(arr[i] == "1") {
-    			//System.out.println(arr[i]);
-    			curLeftX = curRightX / 2;
+    		if(arr[i].equals("1")) {
+    			curLeftX = curRightX / 2; 
+    			//System.out.println("Left: " +curLeftX);
+    			//System.out.println("Right: " +curRightX);
     		}
     		
+    		if(arr[i].equals("0")) {
+    			curRightX = curRightX / 2;
+    			//System.out.println("Left: " +curLeftX);
+    			//System.out.println("Right: " +curRightX);
+    		}
+   		
     	}
     	
-    	double curX = (curLeftX+curRightX)/2.0;
+    	double curX = (curLeftX + curRightX) / 2;
     	
-    	//System.out.println(curX);
+    	System.out.println("CurX: " +curX);
+    	
     	return (int)curX;
     }
     
@@ -79,11 +87,14 @@ public class CustomComponent extends JComponent
     {
     	// for Y, just mult d by vertical spacing and return it
     	//System.out.println("PosY" + d +"\n");
+    	d = d * 2;
     	
     	return (int)(d * getY());
     }
 
 }
+
+/*
 class Circle{
 	
 	public int nodeWidth;
@@ -115,3 +126,4 @@ class Circle{
         g.drawString(str, textX - x, textY + y);
 	}
 }
+*/

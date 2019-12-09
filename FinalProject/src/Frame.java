@@ -17,10 +17,10 @@ public class Frame extends JFrame
     private BinarySearchTree tree;
     
     public int nodeHeight = 25;    
-    private static final int FRAME_HEIGHT = 750;
-    private static final int FRAME_WIDTH = 750;
-    private static final int COMPONENT_WIDTH = 700;
-    private static final int COMPONENT_HEIGHT = 600;
+    private static final int FRAME_HEIGHT = 1000;
+    private static final int FRAME_WIDTH = 1200;
+    private static final int COMPONENT_WIDTH = 900;
+    private static final int COMPONENT_HEIGHT = 900;
     
     
     public Frame() {
@@ -82,13 +82,14 @@ public class Frame extends JFrame
                 
                 //int nodePosX = COMPONENT_HEIGHT / 2;
                 
-                tree = new BinarySearchTree();
+                //tree = new BinarySearchTree();
                
                 //BinarySearchTree tree = new BinarySearchTree();
                 //ArrayList<Integer> arr = new ArrayList<>();
                 for(int i = 0; i < arr.size(); i++) {
 
                     tree.add(arr.get(i));
+                    component.cArr.add(arr.get(i));
                     
                     //component.cir.add(new Circle(val[i], nodePosX + 50*i, nodeHeight + 50*i)); //Right
                     //component.cir.add(new Circle(val[i], nodePosX - 50*i, nodeHeight + 50*i)); //Left
@@ -101,7 +102,7 @@ public class Frame extends JFrame
                 }
             }
             
-            tree.iPrint();
+            //tree.iPrint();
             
             component.draw();
             root.requestFocusInWindow();
@@ -112,6 +113,7 @@ public class Frame extends JFrame
     class ClearTree implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
+			tree.clear();
 			component.draw();
 			root.requestFocusInWindow();
 			root.selectAll();
