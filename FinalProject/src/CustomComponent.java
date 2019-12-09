@@ -8,11 +8,12 @@ import javax.swing.JComponent;
 public class CustomComponent extends JComponent
 {
 	public BinarySearchTree cTree;
-	public List<Circle> cir;
+	public ArrayList<Integer> cArr;
 	
-    public CustomComponent(BinarySearchTree ct)
+    public CustomComponent(BinarySearchTree ct, ArrayList<Integer> a)
     {
         cTree = ct;
+        cArr = a;
     }
 /*    
     public void draw(String num, int x, int y) {
@@ -26,6 +27,7 @@ public class CustomComponent extends JComponent
 */    
     
     public void draw() { 
+        
     	repaint();
     }
     
@@ -34,31 +36,32 @@ public class CustomComponent extends JComponent
         // Use this method to draw whatever you want
     	setLocation(getX(), getY());
         g.setColor(Color.BLACK);
-        g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
+        g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);     
         
-        for(Circle x : cir) {
+        for(int i = 0; i < cArr.size(); i++) {
+        	g.drawOval(getNodeX(cTree.getPath(cArr.get(i))), getNodeY(cTree.getDepth(cArr.get(i))), 60, 60);
         	
-        	x.drawCircle(g);
+        	System.out.println(getNodeX(cTree.getPath(cArr.get(i))));
+        	//System.out.println(getNodeY(cTree.getDepth(cArr.get(i))));
+        	System.out.println(cTree.getPath(4));
+        	//System.out.println(cTree.getDepth(cArr.get(i)));
         }
-        
+
     }
     
-    private double getNodeX(String p)
+    private int getNodeX(String p)
     {
     	// var for curLeftX=0, curRightX=getWidth(), curX=(curLeftX+curRightX)/2.0
     	// loop through p and update LXand RX
-    	
+
     	String[] arr = p.split("");
     
     	double curLeftX = 0;
     	double curRightX = getWidth();
     	
-    	if(p == null) {
-    		return getWidth() / 2.0;
-    	}
-    	
     	for(int i = 0; i < arr.length; i++) {
     		if(arr[i] == "1") {
+    			System.out.println(arr[i]);
     			curLeftX = curRightX / 2;
     		}
     		
@@ -66,18 +69,18 @@ public class CustomComponent extends JComponent
     	
     	double curX = (curLeftX+curRightX)/2.0;
     	
-    	
-    	return curX;
+    	//System.out.println(curX);
+    	return (int)curX;
     }
     
-    private double getNodeY(int d)
+    private int getNodeY(int d)
     {
     	// for Y, just mult d by vertical spacing and return it
     	
-    	return d * getY();
+    	return (int)(d * getY());
     }
-}
 
+}
 class Circle{
 	
 	public int nodeWidth;

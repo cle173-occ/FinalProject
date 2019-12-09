@@ -13,6 +13,7 @@ public class BinarySearchTree {
 		public Comparable data;
 		public Node left;
 		public Node right;
+		public int count;
 		
 		public String path;  // string of "1" and "0" (Huffman tree inspired), eg. "101" means R L R
 		public int depth;
@@ -41,7 +42,12 @@ public class BinarySearchTree {
 					right.addNode(node, (p + "1"), d+1);
 				}
 			}
+			count++;
 		}
+	}
+	
+	public Node getRoot() {
+		return root;
 	}
 	
 	public void add(Comparable obj) {

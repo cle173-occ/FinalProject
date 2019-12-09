@@ -15,6 +15,7 @@ public class Frame extends JFrame
     private CustomComponent component;
 
     private BinarySearchTree tree;
+    private ArrayList<Integer> arr;
     
     public int nodeHeight = 25;    
     private static final int FRAME_HEIGHT = 750;
@@ -25,6 +26,7 @@ public class Frame extends JFrame
     
     public Frame() {
         tree = new BinarySearchTree();
+        arr = new ArrayList<>();
     	
         createComponents();
         setSize(FRAME_HEIGHT, FRAME_WIDTH);
@@ -49,7 +51,7 @@ public class Frame extends JFrame
         root.selectAll();
         
         //Custom component to draw
-        component = new CustomComponent(tree);
+        component = new CustomComponent(tree, arr);
         component.setPreferredSize(new Dimension(COMPONENT_WIDTH, COMPONENT_HEIGHT));
         
         //Panel with added GUI components
@@ -68,7 +70,7 @@ public class Frame extends JFrame
       
         public void actionPerformed(ActionEvent e) throws NumberFormatException
         {
-        	ArrayList<Integer> arr = new ArrayList<>();
+        	//ArrayList<Integer> arr = new ArrayList<>();
             String s = root.getText();
             String[] val = s.split(","); //Separates the values by comma and places them into a string array
             
@@ -80,27 +82,20 @@ public class Frame extends JFrame
                     arr.add(n);
                 }
                 
-                int nodePosX = COMPONENT_HEIGHT / 2;
+                //int nodePosX = COMPONENT_HEIGHT / 2;
                 
-
+                arr = new ArrayList<>();
                 tree = new BinarySearchTree();
 
-                int level = 1;
-                int i = 0;
-                BinarySearchTree tree = new BinarySearchTree();
-                for(i = 0; i < arr.size(); i++) {
+                //BinarySearchTree tree = new BinarySearchTree();
+                for(int i = 0; i < arr.size(); i++) {
 
-                    tree.add(arr.get(i));
+                    component.cTree.add(arr.get(i));
+                    arr.add(arr.get(i));
                     
                     //component.cir.add(new Circle(val[i], nodePosX + 50*i, nodeHeight + 50*i)); //Right
                     //component.cir.add(new Circle(val[i], nodePosX - 50*i, nodeHeight + 50*i)); //Left
-                }
-                
-                
-                
-                for(i = 0; i < arr.size(); i++) {
-                	//component.cir.add(new Circle(val[i], tree.ge), nodeHeight + 50*i));
-                }
+                }                
                 
             } 
             catch(Exception exception) {
@@ -118,9 +113,10 @@ public class Frame extends JFrame
     class ClearTree implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			if(component.cir.size() != 0) {
-            	component.cir.clear();
-            }
+			if(arr != null) {
+				arr.clear();
+				tree = new BinarySearchTree();
+			}
 			component.draw();
 			root.requestFocusInWindow();
 			root.selectAll();
