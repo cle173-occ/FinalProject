@@ -45,40 +45,38 @@ public class CustomComponent extends JComponent
 
         }
         catch(Exception e) {}
-        
-        getNodeX(cTree.getPath(7));
-    	System.out.println("Path:" +cTree.getPath(6));
     }
 
     
     private int getNodeX(String p)
     {
     	// var for curLeftX=0, curRightX=getWidth(), curX=(curLeftX+curRightX)/2.0
-    	// loop through p and update LXand RX
-    	System.out.println("posX: " + p + "\n");
+    	// loop through p and update LX and RX
+    	//System.out.println("posX: " + p + "\n");
     	String[] arr = p.split("");
     	
     	double curLeftX = 0;
     	double curRightX = getWidth();
+    	double mid = getWidth() / 2;
     	
     	for(int i = 0; i < arr.length; i++) {
     		if(arr[i].equals("1")) {
     			curLeftX = curRightX / 2; 
-    			//System.out.println("Left: " +curLeftX);
-    			//System.out.println("Right: " +curRightX);
+    			//System.out.println("Left: " + p + ": " +curLeftX);
+    			//System.out.println("Right: " + p + ": "+curRightX);
     		}
     		
     		if(arr[i].equals("0")) {
     			curRightX = curRightX / 2;
-    			//System.out.println("Left: " +curLeftX);
-    			//System.out.println("Right: " +curRightX);
+    			//System.out.println("Left: " + p + ": " +curLeftX);
+    			//System.out.println("Right: " + p + ": " +curRightX);
     		}
-   		
+    		
     	}
     	
     	double curX = (curLeftX + curRightX) / 2;
     	
-    	System.out.println("CurX: " +curX);
+    	System.out.println("CurX: " +curX + "\n");
     	
     	return (int)curX;
     }
