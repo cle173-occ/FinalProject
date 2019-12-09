@@ -84,6 +84,26 @@ public class BinarySearchTree {
 		return false;
 	}
 	
+	public int getData(Comparable obj) {
+			
+			Node current = root;
+	
+			while(current != null) {
+				int x = current.data.compareTo(obj);
+				if(x == 0) { 
+					return (int) current.data;
+				}
+				
+				if(x > 0) {
+					current = current.left;
+				}
+				else {
+					current = current.right;
+				}
+			}
+						
+			return 0;
+		}
 	
 	public String getPath(Comparable obj) {
 		

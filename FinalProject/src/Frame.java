@@ -26,8 +26,8 @@ public class Frame extends JFrame
     
     public Frame() {
         tree = new BinarySearchTree();
-        arr = new ArrayList<>();
-    	
+    	arr = new ArrayList<>();
+        
         createComponents();
         setSize(FRAME_HEIGHT, FRAME_WIDTH);
     }
@@ -84,14 +84,14 @@ public class Frame extends JFrame
                 
                 //int nodePosX = COMPONENT_HEIGHT / 2;
                 
-                arr = new ArrayList<>();
                 tree = new BinarySearchTree();
-
+               
                 //BinarySearchTree tree = new BinarySearchTree();
+                //ArrayList<Integer> arr = new ArrayList<>();
                 for(int i = 0; i < arr.size(); i++) {
 
-                    component.cTree.add(arr.get(i));
-                    arr.add(arr.get(i));
+                    tree.add(arr.get(i));
+                    component.cArr.add(arr.get(i));
                     
                     //component.cir.add(new Circle(val[i], nodePosX + 50*i, nodeHeight + 50*i)); //Right
                     //component.cir.add(new Circle(val[i], nodePosX - 50*i, nodeHeight + 50*i)); //Left
@@ -104,6 +104,8 @@ public class Frame extends JFrame
                 }
             }
             
+            tree.iPrint();
+            
             component.draw();
             root.requestFocusInWindow();
             root.selectAll();
@@ -113,10 +115,6 @@ public class Frame extends JFrame
     class ClearTree implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			if(arr != null) {
-				arr.clear();
-				tree = new BinarySearchTree();
-			}
 			component.draw();
 			root.requestFocusInWindow();
 			root.selectAll();

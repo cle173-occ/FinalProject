@@ -39,12 +39,17 @@ public class CustomComponent extends JComponent
         g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);     
         
         for(int i = 0; i < cArr.size(); i++) {
-        	g.drawOval(getNodeX(cTree.getPath(cArr.get(i))), getNodeY(cTree.getDepth(cArr.get(i))), 60, 60);
         	
-        	System.out.println(getNodeX(cTree.getPath(cArr.get(i))));
+        	int posX = getNodeX(cTree.getPath(cArr.get(i)));
+        	int posY = getNodeY(cTree.getDepth(cArr.get(i)));
+        	
+        	g.drawOval(posX, posY, 60, 60);
+        	g.drawString(cArr.get(i).toString(), posX / 2, posY / 2);
+        	
+        	System.out.println(posX);
+        	System.out.println(posY);
         	//System.out.println(getNodeY(cTree.getDepth(cArr.get(i))));
-        	System.out.println(cTree.getPath(4));
-        	//System.out.println(cTree.getDepth(cArr.get(i)));
+        	
         }
 
     }
@@ -53,7 +58,7 @@ public class CustomComponent extends JComponent
     {
     	// var for curLeftX=0, curRightX=getWidth(), curX=(curLeftX+curRightX)/2.0
     	// loop through p and update LXand RX
-
+    	//System.out.println("posX" + p + "\n");
     	String[] arr = p.split("");
     
     	double curLeftX = 0;
@@ -61,7 +66,7 @@ public class CustomComponent extends JComponent
     	
     	for(int i = 0; i < arr.length; i++) {
     		if(arr[i] == "1") {
-    			System.out.println(arr[i]);
+    			//System.out.println(arr[i]);
     			curLeftX = curRightX / 2;
     		}
     		
@@ -76,6 +81,7 @@ public class CustomComponent extends JComponent
     private int getNodeY(int d)
     {
     	// for Y, just mult d by vertical spacing and return it
+    	//System.out.println("PosY" + d +"\n");
     	
     	return (int)(d * getY());
     }
