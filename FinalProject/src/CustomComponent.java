@@ -61,13 +61,13 @@ public class CustomComponent extends JComponent
     	
     	for(int i = 0; i < arr.length; i++) {
     		if(arr[i].equals("1")) {
-    			curLeftX = curRightX / 2; 
-    			//System.out.println("Left: " + p + ": " +curLeftX);
+    			curLeftX = (curRightX + curLeftX) / 2; 
+    			System.out.println("Left: " + p + ": " +curLeftX);
     			//System.out.println("Right: " + p + ": "+curRightX);
     		}
     		
     		if(arr[i].equals("0")) {
-    			curRightX = curRightX / 2;
+    			curRightX = (curRightX + curLeftX) / 2;
     			//System.out.println("Left: " + p + ": " +curLeftX);
     			//System.out.println("Right: " + p + ": " +curRightX);
     		}
